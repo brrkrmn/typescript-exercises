@@ -11,32 +11,32 @@ const parseArguments = (args: string[]): BmiValues => {
         return {
             height: Number(args[2]),
             weight: Number(args[3])
-        }
+        };
     } else {
         throw new Error('Provided values are not numbers!');
     }
-}
+};
 
 export const calculateBmi = (h: number, w: number) => {
-    const bmi: number = (w / h / h) * 10000
+    const bmi: number = (w / h / h) * 10000;
     if (bmi < 18.5) {
-        return('underweight')
+        return('underweight');
     } else if ( bmi < 24.9 ) {
-        return('normal')
+        return('normal');
     } else if (bmi < 29.9) {
-        return('overweight')
+        return('overweight');
     } else {
-        return('obese')
+        return('obese');
     }
-}
+};
 
 try {
-    const { height, weight } = parseArguments(process.argv)
-    calculateBmi(height, weight)
+    const { height, weight } = parseArguments(process.argv);
+    calculateBmi(height, weight);
 } catch (error: unknown) {
-    let errorMessage = 'Something went wrong.'
+    let errorMessage = 'Something went wrong.';
     if (error instanceof Error) {
         errorMessage += 'Error: ' + error.message;
     }
-    console.log(errorMessage)
+    console.log(errorMessage);
 }
